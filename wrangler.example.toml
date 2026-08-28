@@ -4,8 +4,8 @@ pages_build_output_dir = "."
 
 [[d1_databases]]
 binding = "DB"
-database_name = "ami-letter-clicks"
-database_id = "your-d1-database-id"
+database_name = "ami-letter-db"
+database_id = "cb378f1b-fc35-4e2a-95a3-74132373ed78"
 
 [vars]
 STATS_TOKEN = "choose-a-private-token"
