@@ -30,14 +30,17 @@
         Keep each part in the same letter-section structure.
         Keep each paragraph as a separate <p> for comfortable Japanese line wrapping.
       -->
-      <section class="letter-section intro-section" aria-labelledby="intro-title">
+      <section class="letter-section intro-section reading-page" data-reading-page="intro" aria-labelledby="intro-title">
         <h2 id="intro-title">はじめに</h2>
         <p>亚美ちゃん、ここを開いて読んでくれてありがとう。</p>
         <p>かなり長い文章になってしまって、ごめんね。<br>でも、ここに書いたことは全部、この間ずっと僕が本当に伝えたかったことです。</p>
         <p>最後まで読めなくても大丈夫。<br>ここを開いてくれただけでも、本当にありがとう。</p>
+        <nav class="page-navigation page-navigation--first" aria-label="手紙のページ移動">
+          <button class="page-nav-button" type="button" data-next-page>次へ →</button>
+        </nav>
       </section>
 
-      <section class="letter-section" aria-labelledby="thinking-title">
+      <section class="letter-section reading-page" data-reading-page="1" aria-labelledby="thinking-title">
         <p class="section-kicker">01</p>
         <h2 id="thinking-title">最近ずっと考えていたこと</h2>
         <p>もうずいぶん長い間、亚美ちゃんからの連絡がないね。</p>
@@ -56,9 +59,13 @@
         <p>でも、どれだけ考えても、本当の答えはわからない。</p>
         <p>僕は亚美ちゃんの頭の中に入ることはできないから。</p>
         <p>本当の答えを知っているのは、亚美ちゃんだけなんだと思う。</p>
+        <nav class="page-navigation" aria-label="手紙のページ移動">
+          <button class="page-nav-button" type="button" data-previous-page>← 前へ</button>
+          <button class="page-nav-button" type="button" data-next-page>次へ →</button>
+        </nav>
       </section>
 
-      <section class="letter-section memory-section" aria-labelledby="memories-title">
+      <section class="letter-section memory-section reading-page" data-reading-page="2" aria-labelledby="memories-title">
         <p class="section-kicker">02</p>
         <h2 id="memories-title">忘れたくないこと</h2>
         <p>仕事が終わって、一人で暗い部屋にいると、二人で過ごした時間が波みたいに次々と思い出される。</p>
@@ -85,9 +92,13 @@
         <p>もし誰かに見られたら、たぶん「この人大丈夫？」って病院に連れていかれそうだね（笑）。</p>
         <p>そんな一つ一つの思い出が、少しずつ僕の心に刻まれていった。</p>
         <p>気づいたら僕の心は、亚美ちゃんの形になっていた。</p>
+        <nav class="page-navigation" aria-label="手紙のページ移動">
+          <button class="page-nav-button" type="button" data-previous-page>← 前へ</button>
+          <button class="page-nav-button" type="button" data-next-page>次へ →</button>
+        </nav>
       </section>
 
-      <section class="letter-section" aria-labelledby="feelings-title">
+      <section class="letter-section reading-page" data-reading-page="3" aria-labelledby="feelings-title">
         <p class="section-kicker">03</p>
         <h2 id="feelings-title">僕の気持ち</h2>
         <p>二人で一緒に思い描いていた幸せな未来を思い出して、</p>
@@ -126,9 +137,13 @@
         <p>好きな人に何度も「まだ僕のこと好き？」って確認しなくても、自分の心の中から安心を見つけられる人になりたい。</p>
         <p>亚美ちゃんが疲れたときに、安心して逃げ込める場所になりたい。</p>
         <p>もう一つのプレッシャーにはなりたくない。</p>
+        <nav class="page-navigation" aria-label="手紙のページ移動">
+          <button class="page-nav-button" type="button" data-previous-page>← 前へ</button>
+          <button class="page-nav-button" type="button" data-next-page>次へ →</button>
+        </nav>
       </section>
 
-      <section class="letter-section" aria-labelledby="future-title">
+      <section class="letter-section reading-page" data-reading-page="4" aria-labelledby="future-title">
         <p class="section-kicker">04</p>
         <h2 id="future-title">これから</h2>
         <p>過去を振り返ると、今でもよく自分を責めてしまう。</p>
@@ -166,9 +181,13 @@
         <p>これから少しずつ、自分たちの手で続きを書いていくもの。</p>
         <p>そして最後には、</p>
         <p>僕はやっぱり、その続きを二人で一緒に書いていけたらいいなと思ってる。</p>
+        <nav class="page-navigation" aria-label="手紙のページ移動">
+          <button class="page-nav-button" type="button" data-previous-page>← 前へ</button>
+          <button class="page-nav-button" type="button" data-next-page>次へ →</button>
+        </nav>
       </section>
 
-      <section class="letter-section" aria-labelledby="ami-title">
+      <section class="letter-section reading-page" data-reading-page="5" aria-labelledby="ami-title">
         <p class="section-kicker">05</p>
         <h2 id="ami-title">亚美ちゃんへ</h2>
         <p>僕はこれからも、二人で並んで幸せな人生の道を歩いていけたらいいなと思ってる。</p>
@@ -193,9 +212,13 @@
         <p>僕はその選択を尊重するし、受け止める。</p>
         <p>だって、最後にどんな未来になったとしても、</p>
         <p>僕はこの可愛い子に、ずっと幸せでいてほしいから。</p>
+        <nav class="page-navigation" aria-label="手紙のページ移動">
+          <button class="page-nav-button" type="button" data-previous-page>← 前へ</button>
+          <button class="page-nav-button" type="button" data-next-page>次へ →</button>
+        </nav>
       </section>
 
-      <section class="letter-ending" aria-label="最後の言葉">
+      <section class="letter-ending reading-page" data-reading-page="final" aria-label="最後の言葉">
         <p>亚美ちゃんは猫が一番好きだよね。</p>
         <p>だから、これからの亚美ちゃんも、猫みたいに生きていってほしい。</p>
         <p>たくさん愛されて、</p>
@@ -211,6 +234,10 @@
         <p>亚美ちゃんが疲れたときに、安心して帰ってこられる場所の一つに、僕もなれたらいいな。</p>
         <p class="final-cat">🐈</p>
         <div class="resting-cat" aria-hidden="true"></div>
+
+        <nav class="page-navigation page-navigation--final" aria-label="手紙のページ移動">
+          <button class="page-nav-button" type="button" data-previous-page>← 前へ</button>
+        </nav>
 
         <div class="acknowledgement" id="acknowledgement">
           <div class="acknowledgement__prompt" id="ackPrompt">

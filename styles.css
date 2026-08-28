@@ -152,6 +152,7 @@ h1 {
 
 .read-button:focus-visible,
 .acknowledgement__button:focus-visible,
+.page-nav-button:focus-visible,
 .skip-link:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 4px;
@@ -219,6 +220,19 @@ h1 {
   border-top: 1px solid var(--line);
 }
 
+.reading-page {
+  display: none;
+}
+
+.reading-page.is-active {
+  display: block;
+  animation: pageFade 340ms ease both;
+}
+
+.letter.is-moving-back .reading-page.is-active {
+  animation-name: pageFadeBack;
+}
+
 .letter-section:first-child {
   border-top: 0;
 }
@@ -248,6 +262,43 @@ p {
   margin-top: 1.28rem;
 }
 
+.page-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 4.5rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(148, 118, 106, 0.18);
+}
+
+.page-navigation--first {
+  justify-content: flex-end;
+}
+
+.page-navigation--final {
+  margin-top: 4.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.page-nav-button {
+  min-width: 5.75rem;
+  min-height: 2.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #75665f;
+  cursor: pointer;
+  line-height: 1.4;
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.page-nav-button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 253, 248, 0.42);
+  color: #4f433e;
+}
+
 .memories {
   position: relative;
   margin: 2.35rem 0;
@@ -273,11 +324,15 @@ p {
 .letter-ending {
   position: relative;
   min-height: 92svh;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   padding: 6rem 0 6.5rem;
   text-align: center;
+}
+
+.letter-ending.is-active {
+  display: flex;
 }
 
 .letter-ending::before {
@@ -446,6 +501,30 @@ p {
 
   .memories {
     margin-left: 1.5rem;
+  }
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateX(0.45rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pageFadeBack {
+  from {
+    opacity: 0;
+    transform: translateX(-0.45rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

@@ -1,4 +1,4 @@
-const ALLOWED_TYPES = new Set(["opened", "acknowledged"]);
+const ALLOWED_TYPES = new Set(["opened", "page_progress", "acknowledged"]);
 
 function getSydneyTimestamp(date) {
   return new Intl.DateTimeFormat("en-AU", {
@@ -6,6 +6,18 @@ function getSydneyTimestamp(date) {
     timeStyle: "long",
     timeZone: "Australia/Sydney",
   }).format(date);
+}
+
+function normalizePage(type, page) {
+  if (type !== "page_progress") {
+    return null;
+  }
+
+  if (!Number.isInteger(page) || page < 1 || page > 5) {
+    return undefined;
+  }
+
+  return page;
 }
 
 export async function onRequestPost(context) {
@@ -25,22 +37,28 @@ export async function onRequestPost(context) {
     return Response.json({ ok: false, error: "Unknown interaction type." }, { status: 400 });
   }
 
+  const page = normalizePage(body.type, body.page);
+
+  if (page === undefined) {
+    return Response.json({ ok: false, error: "Invalid page value." }, { status: 400 });
+  }
+
   const clickedAt = new Date();
-  const clickedAtUtc = clickedAt.toISOString().replace(/\.\d{3}Z$/, "Z");
+  const createdAt = clickedAt.toISOString().replace(/\.\d{3}Z$/, "Z");
   const clickedAtSydney = getSydneyTimestamp(clickedAt);
 
   await context.env.DB.prepare(
-    "INSERT INTO interactions (type, clicked_at_utc, clicked_at_sydney) VALUES (?, ?, ?)"
+    "INSERT INTO interactions (type, page, created_at, clicked_at_utc, clicked_at_sydney) VALUES (?, ?, ?, ?, ?)"
   )
-    .bind(body.type, clickedAtUtc, clickedAtSydney)
+    .bind(body.type, page, createdAt, createdAt, clickedAtSydney)
     .run();
 
   return Response.json(
     {
       ok: true,
       type: body.type,
-      clicked_at_utc: clickedAtUtc,
-      clicked_at_sydney: clickedAtSydney,
+      page,
+      created_at: createdAt,
     },
     {
       headers: {
