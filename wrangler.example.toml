@@ -1,0 +1,11 @@
+name = "ami-letter"
+compatibility_date = "2026-08-28"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ami-letter-clicks"
+database_id = "your-d1-database-id"
+
+[vars]
+STATS_TOKEN = "choose-a-private-token"
