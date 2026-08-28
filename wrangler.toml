@@ -1,11 +1,12 @@
 name = "ami-letter"
 compatibility_date = "2026-08-28"
-pages_build_output_dir = "."
+main = "./_worker.js"
+
+[assets]
+directory = "."
+binding = "ASSETS"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "ami-letter-db"
 database_id = "cb378f1b-fc35-4e2a-95a3-74132373ed78"
-
-[vars]
-STATS_TOKEN = "choose-a-private-token"
