@@ -2,6 +2,7 @@ const cover = document.querySelector("#cover");
 const letter = document.querySelector("#letter");
 const readButton = document.querySelector("#readButton");
 const readingPages = [...document.querySelectorAll("[data-reading-page]")];
+const progressSegments = [...document.querySelectorAll("[data-progress-page]")];
 const previousButtons = [...document.querySelectorAll("[data-previous-page]")];
 const nextButtons = [...document.querySelectorAll("[data-next-page]")];
 const ackPrompt = document.querySelector("#ackPrompt");
@@ -129,12 +130,30 @@ function getCurrentPageKey() {
   return pageOrder[currentPageIndex];
 }
 
+function updateReadingProgress(pageKey) {
+  progressSegments.forEach((segment) => {
+    const segmentIndex = pageOrder.indexOf(segment.dataset.progressPage);
+    const isActive = segment.dataset.progressPage === pageKey;
+
+    segment.classList.toggle("is-active", isActive);
+    segment.classList.toggle("is-past", segmentIndex >= 0 && segmentIndex < currentPageIndex);
+
+    if (isActive) {
+      segment.setAttribute("aria-current", "step");
+    } else {
+      segment.removeAttribute("aria-current");
+    }
+  });
+}
+
 function setActivePage(pageKey, direction) {
   letter.classList.toggle("is-moving-back", direction === "back");
 
   readingPages.forEach((page) => {
     page.classList.toggle("is-active", page.dataset.readingPage === pageKey);
   });
+
+  updateReadingProgress(pageKey);
 
   window.scrollTo({ top: 0, behavior: "auto" });
   letter.focus({ preventScroll: true });

@@ -214,6 +214,48 @@ h1 {
   outline: none;
 }
 
+.reading-progress {
+  position: sticky;
+  top: 0.8rem;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  gap: 0.38rem;
+  width: min(100%, 18rem);
+  height: 1rem;
+  margin: -2.2rem auto 2.25rem;
+  pointer-events: none;
+}
+
+.reading-progress__segment {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(148, 118, 106, 0.2);
+  opacity: 0.64;
+  transform: translateY(0);
+  transition:
+    height 260ms ease,
+    opacity 260ms ease,
+    transform 260ms ease,
+    background-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.reading-progress__segment.is-past {
+  background: rgba(139, 105, 95, 0.34);
+  opacity: 0.72;
+}
+
+.reading-progress__segment.is-active {
+  height: 5px;
+  background: rgba(128, 92, 84, 0.58);
+  opacity: 1;
+  transform: translateY(-1.5px);
+  box-shadow: 0 0.32rem 0.9rem rgba(122, 88, 80, 0.12);
+}
+
 .letter-section {
   margin: 0;
   padding: 5rem 0;
@@ -277,8 +319,8 @@ p {
 }
 
 .page-navigation--final {
-  margin-top: 4.8rem;
-  margin-bottom: 1.2rem;
+  margin-top: 3.6rem;
+  margin-bottom: 0;
 }
 
 .page-nav-button {
@@ -359,7 +401,7 @@ p {
 
 .acknowledgement {
   width: min(100%, 26rem);
-  margin: 8.5rem auto 0;
+  margin: 2.8rem auto 0;
   color: #75665f;
 }
 
